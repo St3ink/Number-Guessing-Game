@@ -17,19 +17,23 @@ int main() {
   random_device myEngine;
   uniform_int_distribution<int> randomInt(1, 100);
   int answer = randomInt(myEngine);
+  int tries = 0;
 
   while (guess != answer)
     {
-    cout << "Guess a number between 1 and 100: ";
-    cin >> guess;
+      cout << "Guess a number between 1 and 100: ";
+      cin >> guess;
+      
+      if(guess > answer)
+        cout << "Too high, try again.\n";
 
-    if(guess > answer)
-      cout << "Too high, try again.\n";
-
-    if(guess < answer)
-      cout << "Too low, try again.\n";
-    }  
-  cout << "You got it!";
+     if(guess < answer)
+        cout << "Too low, try again.\n";
+      
+          tries++;
+    }    
+  
+  cout << "You got it in " << tries << " tries!";
 
 return 0;
 }
